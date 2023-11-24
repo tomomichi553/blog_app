@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
- dev_basis02
+
 use App\Http\Controllers\PostController;
 
 
@@ -15,6 +15,8 @@ use App\Http\Controllers\PostController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
- dev_basis02
+
 Route::get('/', [PostController::class,'index']);
+
+Route::get('/posts/{post}',[PostController::class,'show']);
 
