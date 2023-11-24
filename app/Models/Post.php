@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+    dev_basis02
     
     public function getPaginateByLimit(int $limit_count = 5)
 {
@@ -15,4 +16,5 @@ class Post extends Model
 }
 
 }
+
 
