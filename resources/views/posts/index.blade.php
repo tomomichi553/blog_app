@@ -11,6 +11,7 @@
 </head>
 <body>
     <h1>Blogsite Name</h1>
+    <a href="/posts/create">新規作成</a>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
