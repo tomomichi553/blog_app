@@ -11,23 +11,24 @@
 </head>
 <body>
     <h1 class="title">
-        ブログ投稿
+        ブログ編集
     </h1>
     <div class="submit">
-        <form action="/posts" method="POST">
+        <form action="/posts/{{$post->id}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="title">
                 <h2> タイトル</h2>
-                <input type="text" name="post[title]" placeholder="タイトル" value="{{old('post.title')}}"></p>
+                <input type="text" name="post[title]" value="{{$post->title}}">
                 <p class="title_error" style="color:red">{{$errors->first('post.title')}}</p>
             </div>
             <div class="body">
                 <h2>内容</h2>
-                <textarea name="post[body]" placeholder="本文" value="{{old('post.body')}}"></textarea>
+                <input type="text" name="post[body]" value="{{$post->body}}">
                 <p class="title_error" style="color:red">{{$errors->first('post.body')}}</p>
             </div>
             
-            <p><input type="submit" value="保存"></p>
+            <input type="submit" value="保存">
         </form>
     </div>
     
