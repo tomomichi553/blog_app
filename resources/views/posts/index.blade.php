@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+<!--<head>
+    
+</head> -->
+<x-app-layout>
+    <x-slot name="header">
         <meta charset="utf-8">
-        
         <title>Blog</title>
-
-        <!-- Fonts -->
-        
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-</head>
-<body>
+    </x-slot>
+    <!--<body>-->
     <h1>Blogsite Name</h1>
+    <div>
+        @foreach($questions as $question)
+            <div>
+                <a href="https://teratail.com/questions/{{$question['id']}}">
+                    {{$question['title']}}
+                </a>
+            </div>
+        @endforeach
+    </div>
+    
     <a href="/posts/create">新規作成</a>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
                     <h2 class='title'>
                         <a href="/posts/{{$post->id}}">{{$post->title}}</a>
+                        <br>
+                        <a href="/categories/{{$post->category->id}}" style="font-size:10pt;">{{$post->category->name}}</a>
                     </h2>
                     <p class='body'>{{$post->body}}</p>
+                    
                     <form action="/posts/{{$post->id}}" id="form_{{$post->id}}" method="post">
                         @csrf
                         @method('DELETE')
@@ -26,6 +39,9 @@
                     </form>
                 </div>
             @endforeach
+        </div>
+        <div>
+            <p>ログインユーザー:{{Auth::user()->name}}</p>
         </div>
         <div class='paginate'>
             {{ $posts->links() }}
@@ -39,5 +55,7 @@
                 }
             }
         </script>
-</body>
-</html>
+    <!--</body>-->
+</x-app-layout>
+
+</html><
